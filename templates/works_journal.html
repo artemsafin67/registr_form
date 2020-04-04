@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="text-center text-muted">Works log</h1>
+
+    {% for item in news %}
+        <h2 class="text-left text-info margin_20px">Action №{{ item.id }}</h2>
+        <table class="margin_20px">
+            <tr>
+                <td class="grey-bg extra_width">Title of activity</td>
+                <td class="grey-bg">Team leader</td>
+                <td class="grey-bg">Duration</td>
+                <td class="grey-bg">List of collaborators</td>
+                <td class="grey-bg">Is finished</td>
+            </tr>
+
+            <tr>
+                <td class="purple-bg">{{ item.job }}</td>
+                <td class="purple-bg">{{ item.team_leader.name + " " + item.team_leader.surname }}</td>
+                <td class="purple-bg">{{ item.work_size }}</td>
+                <td class="purple-bg">{{ item.collaborators }}</td>
+                {% if item.is_finished %}
+                    <td class="green-bg">{{ item.is_finished }}</td>
+                {% else %}
+                    <td class="red-bg">{{ item.is_finished }}</td>
+                {% endif %}
+            </tr>
+        </table>
+        <br>
+        <br>
+
+    {% endfor %}
+
+{% endblock %}
